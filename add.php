@@ -18,7 +18,27 @@ $pdo=new PDO($dsn,'root','');
     <table>
         <tr>
             <td>school_num</td>
-            <td><input type="text" name="school_num"></td>
+            <?php
+                $sql="SELECT max(`school_num`) FROM `students`";
+                $max=$pdo->query($sql)->fetchColumn();
+
+/*              $rows=$pdo->query($sql)->fetchAll();
+                $row=$pdo->query($sql)->fetch();
+
+                echo "<pre>";
+                echo "fetchColumn";
+                echo "<hr>";
+                print_r($max);
+                echo "fetchAll";
+                echo "<hr>";
+                print_r($rows);
+                echo "fetch";
+                echo "<hr>";
+                print_r($row);
+                echo "</pre>"; */
+
+            ?>
+            <td><input type="text" name="school_num" value="<?=$max+1;?>"></td>
         </tr>
         <tr>
             <td>name</td>
@@ -75,12 +95,12 @@ $pdo=new PDO($dsn,'root','');
         <tr>
             <td>status_code</td>
             <td>
-            <select name="status_code" >
+                <select name="status_code" >
                     <?php 
                     $sql="SELECT * FROM `status`";
                     $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
                     foreach($rows as $row){
-                        echo "<option value='{$row['id']}'>{$row['status']}</option>";
+                        echo "<option value='{$row['code']}'>{$row['status']}</option>";
                     }
                     ?>
                 </select>
@@ -88,11 +108,17 @@ $pdo=new PDO($dsn,'root','');
         </tr>
         <tr>
             <td>班級</td>
-            <td><input type="text" name="classes"></td>
-        </tr>
-        <tr>
-            <td>座號</td>
-            <td><input type="number" name="seat_num"></td>
+            <td>
+                <select name="class_code" onchange="upadte.php">
+                    <?php 
+                    $sql="SELECT `id`,`code`,`name` FROM `classes`";
+                    $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+                    foreach($rows as $row){
+                        echo "<option value='{$row['code']}'>{$row['name']}</option>";
+                    }
+                    ?>
+                </select>                
+            </td>
         </tr>
     </table>
     <input type="submit" value="確認新增">
