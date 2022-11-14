@@ -9,12 +9,16 @@
     <link rel="stylesheet" href="style.css">
     <?php
 
-$dsn="mysql:host=localhost;charset=utf8;dbname=school";
-$pdo=new PDO($dsn,'root','');
+//$dsn="mysql:host=localhost;charset=utf8;dbname=school";
+$db=mysqli_connect('localhost','root','','school');
+mysqli_set_charset($db,'utf8');
 
 $sql="SELECT * FROM `students` LIMIT 5";
+$result=mysqli_query($db,$sql);
+$rows=mysqli_fetch_all($result,MYSQLI_ASSOC);
 
-$rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+//$rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 </head>
 <body>
