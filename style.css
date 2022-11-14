@@ -4,3 +4,14 @@
     box-sizing: border-box;
 }
 
+.list-students{
+    border-collapse: collapse;
+}
+.list-students td{
+    border:1px solid #aaa;
+    padding:5px 10px;
+    text-align: center;
+}
+.list-students td:nth-last-child(1){
+    text-align: right;
+}
