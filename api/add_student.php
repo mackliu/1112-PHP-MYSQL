@@ -17,6 +17,6 @@ $sql="INSERT INTO `students`
  5, '001')";
 
 //$pdo->query($sql);
-$res=$pdo->exec($sql);
-echo "新增成功:".$res;
+// $res=$pdo->exec($sql);
+// echo "新增成功:".$res;
 ?>
