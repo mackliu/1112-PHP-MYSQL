@@ -1,4 +1,6 @@
 <?php
+
+//使用PDO方式建立資料庫連線物件
 $dsn="mysql:host=localhost;charset=utf8;dbname=school";
 $pdo=new PDO($dsn,'root','');
 ?>
@@ -19,6 +21,8 @@ $pdo=new PDO($dsn,'root','');
         <tr>
             <td>school_num</td>
             <?php
+
+                //從資料庫中找到最大的學號
                 $sql="SELECT max(`school_num`) FROM `students`";
                 $max=$pdo->query($sql)->fetchColumn();
 
@@ -38,6 +42,7 @@ $pdo=new PDO($dsn,'root','');
                 echo "</pre>"; */
 
             ?>
+            <!--將最大的學號+1後做為要新增的下一位學生的學號-->
             <td><input type="text" name="school_num" value="<?=$max+1;?>"></td>
         </tr>
         <tr>
@@ -69,6 +74,7 @@ $pdo=new PDO($dsn,'root','');
             <td>
                 <select name="dept">
                     <?php
+                        //從`dept`資料表中撈出所有的科系資料並在網頁上製作成下拉選單的項目
                         $sql="SELECT * FROM `dept`";
                         $depts=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
                         foreach($depts as $dept){
@@ -83,6 +89,7 @@ $pdo=new PDO($dsn,'root','');
             <td>
                 <select name="graduate_at" >
                     <?php 
+                    //從`graduate_school`t資料表中撈出所有的畢業學生資料並在網頁上製作成下拉選單的項目
                     $sql="SELECT * FROM `graduate_school`";
                     $grads=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
                     foreach($grads as $grad){
@@ -97,6 +104,7 @@ $pdo=new PDO($dsn,'root','');
             <td>
                 <select name="status_code" >
                     <?php 
+                    //從`status`資料表中撈出所有的畢業狀態並在網頁上製作成下拉選單的項目
                     $sql="SELECT * FROM `status`";
                     $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
                     foreach($rows as $row){
@@ -110,7 +118,8 @@ $pdo=new PDO($dsn,'root','');
             <td>班級</td>
             <td>
                 <select name="class_code" onchange="upadte.php">
-                    <?php 
+                    <?php
+                    //從`classes`資料表中撈出所有的班級資料並在網頁上製作成下拉選單的項目
                     $sql="SELECT `id`,`code`,`name` FROM `classes`";
                     $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
                     foreach($rows as $row){
