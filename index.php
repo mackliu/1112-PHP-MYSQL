@@ -13,7 +13,7 @@ $dsn="mysql:host=localhost;charset=utf8;dbname=school";
 $pdo=new PDO($dsn,'root','');
 
 if(isset($_GET['code'])){
-    $sql="SELECT `students`.`id` as 'id' ,
+    $sql="SELECT `students`.`id`,
                 `students`.`school_num` as '學號',
                  `students`.`name` as '姓名',
                  `students`.`birthday` as '生日',
@@ -21,16 +21,35 @@ if(isset($_GET['code'])){
           FROM `class_student`,`students` 
           WHERE `class_student`.`school_num`=`students`.`school_num` && 
                 `class_student`.`class_code`='{$_GET['code']}'";
+    $sql_total="SELECT count(`students`.`id`)
+          FROM `class_student`,`students` 
+          WHERE `class_student`.`school_num`=`students`.`school_num` && 
+                `class_student`.`class_code`='{$_GET['code']}'";
 }else{
     //建立撈取學生資料的語法，限制只撈取前20筆
-    $sql="SELECT `students`.`id` as 'id' ,
+    $sql="SELECT `students`.`id`,
                  `students`.`school_num` as '學號',
                  `students`.`name` as '姓名',
                  `students`.`birthday` as '生日',
                  `students`.`graduate_at` as '畢業國中'
-          FROM `students` LIMIT 20";
+          FROM `students`";
+    $sql_total="SELECT count(`students`.`id`)
+          FROM `students`";
 }
+/**
+ * 分頁參數處理中心
+ */
 
+ $div=10;
+ $total=$pdo->query($sql_total)->fetchColumn();
+ echo "總筆數為:".$total;
+ $pages=ceil($total/$div);
+ echo "總頁數為:".$pages;
+ $now=(isset($_GET['page']))?$_GET['page']:1;
+ echo "當前頁為:". $now;
+ $start=($now-1)*$div;
+
+$sql=$sql. " LIMIT $start,$div";
 //執行SQL語法，並從資料庫取回全部符合的資料，加上PDO::FETCH_ASSOC表示只需回傳帶有欄位名的資料
 $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
@@ -76,6 +95,25 @@ if(isset($_GET['status'])){
 }
 
 ?>
+<div class="pages">
+    <?php 
+    for($i=1;$i<=$pages;$i++){
+        if(isset($_GET['code'])){
+            echo "<a href='?page=$i&code={$_GET['code']}'> ";
+            echo $i;
+            echo " </a>";
+            
+        }else{
+            
+            echo "<a href='?page=$i'> ";
+            echo $i;
+            echo " </a>";
+        }
+    }
+
+
+    ?>
+</div>
 <!--建立顯示學生列表的表格html語法-->
 <table class='list-students'>
 <tr>
@@ -108,5 +146,12 @@ foreach($rows as $row){
 }
 ?>
 </table>
+<div>
+    <a href=""> < </a>
+    <a href=""> 1 </a>
+    <a href=""> 2 </a>
+    <a href=""> 3 </a>
+    <a href=""> > </a>
+</div>
 </body>
 </html>
