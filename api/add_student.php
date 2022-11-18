@@ -22,7 +22,9 @@ $class_code=$_POST['class_code'];
 $year=2000;
 
 //透過SQL語法從class_student資料表中找出某班級的最大座號並加1做為新增的學生的座號
-$seat_num=$pdo->query("SELECT max(`seat_num`) from `class_student` WHERE `class_code`='$class_code'")->fetchColumn()+1;
+$max_num=$pdo->query("SELECT max(`seat_num`) from `class_student` WHERE `class_code`='$class_code'")->fetchColumn();
+$seat_num=$max_num+1;
+//$seat_num=$pdo->query("SELECT max(`seat_num`) from `class_student` WHERE `class_code`='$class_code'")->fetchColumn()+1;
 
 //建立新增學生資料到students資料表的語法並帶入相關的變數
 $sql="INSERT INTO `students` 
@@ -45,5 +47,12 @@ echo $sql_class;
 //分別執行兩個新增的語法，如果新增成功，會回傳受影響的資料數，一個新增語法執行成功會回傳1。
 $res1=$pdo->exec($sql);
 $res2=$pdo->exec($sql_class);
-echo "新增成功:".$res;
+//echo "新增成功:".$res1;
+if($res1 && $res2){
+    $status='add_success';
+}else{
+    $status='add_fail';
+}
+header("location:../index.php?status=$status");
+
 ?>

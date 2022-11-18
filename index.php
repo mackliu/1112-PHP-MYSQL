@@ -27,6 +27,20 @@ $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     <a href="login.php">教師登入</a>
 
 </nav>
+<!--根據status來顯示回應-->
+<?php
+if(isset($_GET['status'])){
+    switch($_GET['status']){
+        case 'add_success':
+            echo "<span style='color:green'>新增學生成功</span>";
+        break;
+        case 'add_fail';
+            echo "<span style='color:red'>新增學生有誤</span>";
+        break;
+    }
+}
+
+?>
 <!--建立顯示學生列表的表格html語法-->
 <table class='list-students'>
 <tr>
