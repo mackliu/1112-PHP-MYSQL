@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>學生管理系統</title>
+    <title>後台管理中心</title>
     <link rel="stylesheet" href="style.css">
     <?php
 //使用PDO方式建立資料庫連線物件
@@ -42,12 +42,12 @@ if(isset($_GET['code'])){
 
  $div=10;
  $total=$pdo->query($sql_total)->fetchColumn();
- //echo "總筆數為:".$total;
+ echo "總筆數為:".$total;
  $pages=ceil($total/$div);
- //echo "總頁數為:".$pages;
+ echo "總頁數為:".$pages;
  //$now=(isset($_GET['page']))?$_GET['page']:1;
  $now=$_GET['page']??1;
- //echo "當前頁為:". $now;
+ echo "當前頁為:". $now;
  $start=($now-1)*$div;
 
 $sql=$sql. " LIMIT $start,$div";
@@ -57,13 +57,22 @@ $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 ?>
 </head>
 <body>
+<?php 
+if(isset($_GET['del'])){
+    echo "<div class='del-msg'>";
+    echo $_GET['del'];
+    echo "</div>";
+}
+?>
 <!-- <pre>
    <?php //print_r($rows);?> ;
 </pre> -->
 <h1 style='text-align:center'>學生管理系統</h1>
 <nav>
+    <a href="add.php">新增學生</a>
     <a href="reg.php">教師註冊</a>
     <a href="login.php">教師登入</a>
+
 </nav>
 <nav>
 <ul class="class-list">
@@ -223,6 +232,7 @@ if(isset($_GET['status'])){
     <td>生日</td>
     <td>畢業國中</td>
     <td>年齡</td>
+    <td>操作</td>
 </tr>    
 <?php
 //使用迴圈來顯示每一位學生的資料
@@ -235,6 +245,14 @@ foreach($rows as $row){
  echo "<td>{$row['生日']}</td>";
  echo "<td>{$row['畢業國中']}</td>";
  echo "<td>{$age}</td>";
+ echo "<td>";
+ //加上連結將頁面導向edit.php，同時以GET方式將學生資料的id傳遞到edit.php
+ echo "<a href='edit.php?id={$row['id']}'>編輯</a>";
+ //加上連結將頁面導向del.php，同時以GET方式將學生資料的id傳遞到del.php
+ //echo "<a href='./api/del_student.php?id={$row['id']}'>刪除</a>";
+ echo "<a href='./confirm_del.php?id={$row['id']}'>刪除</a>";
+ //echo "<a href='del.php?id={$row['id']}'>刪除</a>";
+ echo "</td>";
  echo "</tr>";
 }
 ?>
