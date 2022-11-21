@@ -116,6 +116,22 @@ if(isset($_GET['status'])){
     }
 
     ?>
+    <?php
+        //顯示第一頁
+        if($now>=4){
+            if(isset($_GET['code'])){
+                echo "<a href='?page=1&code={$_GET['code']}'> ";
+                echo "1 ";
+                echo " </a>...";
+                
+            }else{
+       
+                echo "<a href='?page=1'> ";
+                echo "1 ";
+                echo " </a>...";
+            }
+        }
+    ?>
     <?php 
     //頁碼區
     //只顯示前後四個頁碼
@@ -158,6 +174,22 @@ if(isset($_GET['status'])){
             echo " </a>";
         }
     } */
+    ?>
+        <?php
+        //顯示第一頁
+        if($now<=($pages-3)){
+            if(isset($_GET['code'])){
+                echo "...<a href='?page=$pages&code={$_GET['code']}'> ";
+                echo "$pages";
+                echo " </a>";
+                
+            }else{
+       
+                echo "...<a href='?page=$pages'> ";
+                echo "$pages";
+                echo " </a>";
+            }
+        }
     ?>
     <?php
     //下一頁
