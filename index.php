@@ -59,10 +59,8 @@ $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 <body>
 <?php 
 if(isset($_GET['del'])){
-    $name=$pdo->query("SELECT `name` from `students` WHERE `id`='{$_GET['del']}'")
-              ->fetchColumn();
     echo "<div class='del-msg'>";
-    echo "$name 資料已刪除!!";
+    echo $_GET['del'];
     echo "</div>";
 }
 ?>
