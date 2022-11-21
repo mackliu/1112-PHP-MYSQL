@@ -45,7 +45,8 @@ if(isset($_GET['code'])){
  echo "總筆數為:".$total;
  $pages=ceil($total/$div);
  echo "總頁數為:".$pages;
- $now=(isset($_GET['page']))?$_GET['page']:1;
+ //$now=(isset($_GET['page']))?$_GET['page']:1;
+ $now=$_GET['page']??1;
  echo "當前頁為:". $now;
  $start=($now-1)*$div;
 
@@ -96,7 +97,27 @@ if(isset($_GET['status'])){
 
 ?>
 <div class="pages">
+    <?php
+    //上一頁
+    //當前頁碼-1,可是不能小於0,最小是1,如果是0,不顯示
+    if(($now-1)>=1){
+        $prev=$now-1;
+        if(isset($_GET['code'])){
+            echo "<a href='?page=$prev&code={$_GET['code']}'> ";
+            echo "&lt; ";
+            echo " </a>";
+            
+        }else{
+   
+            echo "<a href='?page=$prev'> ";
+            echo "&lt; ";
+            echo " </a>";
+        }
+    }
+
+    ?>
     <?php 
+    //頁碼區
     for($i=1;$i<=$pages;$i++){
         if(isset($_GET['code'])){
             echo "<a href='?page=$i&code={$_GET['code']}'> ";
@@ -110,9 +131,26 @@ if(isset($_GET['status'])){
             echo " </a>";
         }
     }
-
-
     ?>
+    <?php
+    //下一頁
+    //當前頁碼+1,可是不能超過總頁數,最大是總頁數,如果超過總頁數,不顯示
+    if(($now+1)<=$pages){
+        $next=$now+1;
+        if(isset($_GET['code'])){
+            echo "<a href='?page=$next&code={$_GET['code']}'> ";
+            //echo "< ";
+            echo "&gt; ";
+            echo " </a>";
+        }else{
+            echo "<a href='?page=$next'> ";
+            //echo " >";
+            echo "&gt; ";
+            echo " </a>";
+        }
+    }
+
+    ?>    
 </div>
 <!--建立顯示學生列表的表格html語法-->
 <table class='list-students'>
