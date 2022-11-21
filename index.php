@@ -113,9 +113,12 @@ if(isset($_GET['status'])){
             echo "&lt; ";
             echo " </a>";
         }
+    }else{
+        echo "<a class='noshow'>&nbsp;</a>";
     }
 
     ?>
+    <div>
     <?php
         //顯示第一頁
         if($now>=4){
@@ -176,7 +179,7 @@ if(isset($_GET['status'])){
     } */
     ?>
         <?php
-        //顯示第一頁
+        //顯示第最後一頁
         if($now<=($pages-3)){
             if(isset($_GET['code'])){
                 echo "...<a href='?page=$pages&code={$_GET['code']}'> ";
@@ -191,6 +194,7 @@ if(isset($_GET['status'])){
             }
         }
     ?>
+    </div>
     <?php
     //下一頁
     //當前頁碼+1,可是不能超過總頁數,最大是總頁數,如果超過總頁數,不顯示
@@ -207,6 +211,8 @@ if(isset($_GET['status'])){
             echo "&gt; ";
             echo " </a>";
         }
+    }else{
+        echo "<a class='noshow'>&nbsp;</a>";
     }
 
     ?>    

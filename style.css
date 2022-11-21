@@ -6,6 +6,7 @@
 
 .list-students{
     border-collapse: collapse;
+    width:800px;
     margin:auto;
 }
 .list-students td{
@@ -22,7 +23,10 @@ nav,.pages{
 .pages{
     font-size:20px;
     font-weight: bolder;
-    margin:1rem;
+    margin:1rem auto;
+    display: flex;
+    justify-content: space-between;
+    width:800px;
 }
 .pages a{
     display: inline-flex;
@@ -72,4 +76,9 @@ nav ul.class-list li a{
 .now{
     background-color: green;
     color:white;
+}
+
+.pages a.noshow{
+    border:0px solid #eee;
+    box-shadow: initial;
 }
