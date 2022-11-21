@@ -15,6 +15,7 @@ if($chk==1){
     $user=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
 
     $_SESSION['login']=$user;
+    header("location:../admin_center.php");
 }else{
     if(isset($_SESSION['login_try'])){
         $_SESSION['login_try']++;
