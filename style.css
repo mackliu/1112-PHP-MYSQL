@@ -6,6 +6,7 @@
 
 .list-students{
     border-collapse: collapse;
+    margin:auto;
 }
 .list-students td{
     border:1px solid #aaa;
@@ -15,7 +16,27 @@
 .list-students td:nth-last-child(1){
     text-align: right;
 }
+nav,.pages{
+    text-align: center;
+}
+.pages{
+    font-size:20px;
+    font-weight: bolder;
+    margin:1rem;
+}
+.pages a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border:1px solid #eee;
+    box-shadow: 1px 1px 5px #ccc;
+    text-align: center;
+    width:32px;
+    height:32px;
+    border-radius: 8px;
 
+}
 nav a{
     display:inline-block;
     padding:5px 10px;
@@ -30,6 +51,8 @@ nav a:hover{
 .class-list{
    display: flex; 
    list-style-type: none;
+   justify-content: center;
+   align-items: center;
    margin:5px 0;
 }
 nav ul.class-list li a{
@@ -45,4 +68,8 @@ nav ul.class-list li a{
     color:white;
     font-weight: bolder;
     text-decoration: underline;
+}
+.now{
+    background-color: green;
+    color:white;
 }

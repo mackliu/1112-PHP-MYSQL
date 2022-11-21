@@ -119,14 +119,15 @@ if(isset($_GET['status'])){
     <?php 
     //頁碼區
     for($i=1;$i<=$pages;$i++){
+        $nowPage=($i==$now)?'now':'';
         if(isset($_GET['code'])){
-            echo "<a href='?page=$i&code={$_GET['code']}'> ";
+            echo "<a href='?page=$i&code={$_GET['code']}' class='$nowPage'> ";
             echo $i;
             echo " </a>";
             
         }else{
             
-            echo "<a href='?page=$i'> ";
+            echo "<a href='?page=$i' class='$nowPage'> ";
             echo $i;
             echo " </a>";
         }
@@ -184,12 +185,6 @@ foreach($rows as $row){
 }
 ?>
 </table>
-<div>
-    <a href=""> < </a>
-    <a href=""> 1 </a>
-    <a href=""> 2 </a>
-    <a href=""> 3 </a>
-    <a href=""> > </a>
-</div>
+
 </body>
 </html>
