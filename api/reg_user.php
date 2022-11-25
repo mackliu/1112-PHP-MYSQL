@@ -1,5 +1,5 @@
 <?php
-include "./db/base.php";
+include "../db/base.php";
 
 $acc=trim(strip_tags($_POST['acc']));
 $pw=trim($_POST['pw']);

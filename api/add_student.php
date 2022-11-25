@@ -1,6 +1,6 @@
 <?php
 //使用PDO方式建立資料庫連線物件
-include "./db/base.php";
+include "../db/base.php";
 
 //建立變數接收表單傳送過來的資料
 $school_num=$_POST['school_num'];
