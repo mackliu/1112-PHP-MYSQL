@@ -59,7 +59,12 @@ $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 <body>
 <?php
     include "./layouts/header.php";
+    $a=10;
+    $b=5;
+$c=$a+$b;
+echo $c;
 ?>
+
 <!-- <pre>
    <?php //print_r($rows);?> ;
 </pre> -->
