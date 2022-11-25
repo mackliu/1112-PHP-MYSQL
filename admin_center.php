@@ -21,28 +21,19 @@ include "./db/base.php";
 <?php
     include "./layouts/header.php";
 ?>
-<?php 
-if(isset($_GET['del'])){
-    echo "<div class='del-msg'>";
-    echo $_GET['del'];
-    echo "</div>";
-}
-?>
-<!-- <pre>
-   <?php //print_r($rows);?> ;
-</pre> -->
+
 <h1 style='text-align:center'>學生管理系統</h1>
 <nav>
     <a href="add.php">新增學生</a>
     <a href="logout.php">教師登出</a>
-
 </nav>
+
 <?php
    include "./layouts/class_nav.php"
 ?>  
-<!--根據status來顯示回應-->
-
-<?php include "./back/main.php";?>
-
+<?php
+    include "./back/main.php";
+?>
+    
 </body>
 </html>
