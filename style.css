@@ -4,6 +4,17 @@
     box-sizing: border-box;
 }
 
+header{
+    padding:1rem;
+    box-shadow: 0 0 10px #ccc;
+    margin-bottom: 1.5rem;
+}
+header .nav{
+    width:800px;
+    margin:auto;
+
+}
+
 .list-students{
     border-collapse: collapse;
     width:800px;

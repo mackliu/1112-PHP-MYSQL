@@ -50,12 +50,12 @@ if(isset($_GET['code'])){
 
  $div=10;
  $total=$pdo->query($sql_total)->fetchColumn();
- echo "總筆數為:".$total;
+ //echo "總筆數為:".$total;
  $pages=ceil($total/$div);
- echo "總頁數為:".$pages;
+ //echo "總頁數為:".$pages;
  //$now=(isset($_GET['page']))?$_GET['page']:1;
  $now=$_GET['page']??1;
- echo "當前頁為:". $now;
+ //echo "當前頁為:". $now;
  $start=($now-1)*$div;
 
 $sql=$sql. " LIMIT $start,$div";
@@ -65,6 +65,9 @@ $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 ?>
 </head>
 <body>
+<?php
+include "./layouts/header.php";
+?>
 <?php 
 if(isset($_GET['del'])){
     echo "<div class='del-msg'>";
