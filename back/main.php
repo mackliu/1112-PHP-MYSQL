@@ -6,6 +6,10 @@ if(isset($_GET['del'])){
 }
 ?>
 <?php
+    include "./layouts/class_nav.php"
+?>  
+
+<?php
 
 if(isset($_GET['code'])){
     $sql="SELECT `students`.`id`,
