@@ -30,19 +30,12 @@ include "./db/base.php";
  
 <?php
 $do=$_GET['do']??'main';
-switch($do){
-    case 'add':
-        include "./back/add.php";
-    break;
-    case 'edit':
-        include "./back/edit.php";
-    break;
-    case 'del':
-        include "./back/confirm_del.php";
-    break;
-    default:
-        include "./back/main.php";
-
+$file='./back/'.$do.".php";
+//echo $file;
+if(file_exists($file)){
+    include $file;
+}else{
+    include "./back/main.php";
 }
 ?>
     
