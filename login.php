@@ -7,6 +7,9 @@
     <title>教師登入</title>
 </head>
 <body>
+<?php
+    include "./layouts/header.php";
+?>
 <h1>教師登入</h1>
 <div>
 <?php

@@ -66,7 +66,7 @@ $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 <?php
-include "./layouts/header.php";
+    include "./layouts/header.php";
 ?>
 <?php 
 if(isset($_GET['del'])){
