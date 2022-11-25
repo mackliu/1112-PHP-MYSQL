@@ -27,12 +27,23 @@ include "./db/base.php";
     <a href="add.php">新增學生</a>
     <a href="logout.php">教師登出</a>
 </nav>
+ 
+<?php
+$do=$_GET['do']??'main';
+switch($do){
+    case 'add':
+        include "./back/add.php";
+    break;
+    case 'edit':
+        include "./back/edit.php";
+    break;
+    case 'del':
+        include "./back/confirm_del.php";
+    break;
+    default:
+        include "./back/main.php";
 
-<?php
-   include "./layouts/class_nav.php"
-?>  
-<?php
-    include "./back/main.php";
+}
 ?>
     
 </body>

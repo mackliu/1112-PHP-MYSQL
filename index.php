@@ -18,11 +18,15 @@ include "./db/base.php";
 
 <h1 style='text-align:center'>學生管理系統</h1>
 
-
-
 <?php
 
 $do=$_GET['do']??'main';
+
+/* if(isset($_GET['do'])){
+    $do=$_GET['do'];
+}else{
+    $do='main';
+} */
 
 switch($do){
     case 'login':
