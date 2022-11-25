@@ -5,7 +5,7 @@ if(!isset($_SESSION['login'])){
     exit();
 }
 
-
+include "./db/base.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,9 +16,6 @@ if(!isset($_SESSION['login'])){
     <title>後台管理中心</title>
     <link rel="stylesheet" href="style.css">
     <?php
-//使用PDO方式建立資料庫連線物件
-$dsn="mysql:host=localhost;charset=utf8;dbname=school";
-$pdo=new PDO($dsn,'root','');
 
 if(isset($_GET['code'])){
     $sql="SELECT `students`.`id`,

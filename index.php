@@ -1,4 +1,6 @@
-
+<?php
+include "./db/base.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +11,7 @@
     <link rel="stylesheet" href="style.css">
     <?php
 //使用PDO方式建立資料庫連線物件
-$dsn="mysql:host=localhost;charset=utf8;dbname=school";
-$pdo=new PDO($dsn,'root','');
+
 
 if(isset($_GET['code'])){
     $sql="SELECT `students`.`id`,
@@ -53,16 +54,13 @@ if(isset($_GET['code'])){
 $sql=$sql. " LIMIT $start,$div";
 //執行SQL語法，並從資料庫取回全部符合的資料，加上PDO::FETCH_ASSOC表示只需回傳帶有欄位名的資料
 $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-
+include "./layouts/style.php"
 ?>
+
 </head>
 <body>
 <?php
     include "./layouts/header.php";
-    $a=10;
-    $b=5;
-$c=$a+$b;
-echo $c;
 ?>
 
 <!-- <pre>
