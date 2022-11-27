@@ -213,11 +213,13 @@ foreach($rows as $row){
  echo "<td>{$row['畢業國中']}</td>";
  echo "<td>{$age}</td>";
  echo "<td>";
+
  //加上連結將頁面導向edit.php，同時以GET方式將學生資料的id傳遞到edit.php
- echo "<a href='edit.php?id={$row['id']}'>編輯</a>";
+ echo "<a href='admin_center.php?do=edit&id={$row['id']}'>編輯</a>";
+
  //加上連結將頁面導向del.php，同時以GET方式將學生資料的id傳遞到del.php
  //echo "<a href='./api/del_student.php?id={$row['id']}'>刪除</a>";
- echo "<a href='./confirm_del.php?id={$row['id']}'>刪除</a>";
+ echo "<a href='./admin_center.php?do=confirm_del&id={$row['id']}'>刪除</a>";
  //echo "<a href='del.php?id={$row['id']}'>刪除</a>";
  echo "</td>";
  echo "</tr>";

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-11-10 14:46:08
+-- 產生時間： 2022-11-27 09:05:18
 -- 伺服器版本： 10.4.25-MariaDB
 -- PHP 版本： 8.1.10
 
@@ -2140,6 +2140,21 @@ INSERT INTO `student_scores` (`school_num`, `score`) VALUES
 ('915082', 80),
 ('915083', 82);
 
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `acc` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pw` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_login` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 --
 -- 已傾印資料表的索引
 --
@@ -2154,8 +2169,7 @@ ALTER TABLE `classes`
 -- 資料表索引 `class_student`
 --
 ALTER TABLE `class_student`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `school_num` (`school_num`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- 資料表索引 `dept`
@@ -2188,6 +2202,12 @@ ALTER TABLE `student_scores`
   ADD PRIMARY KEY (`school_num`);
 
 --
+-- 資料表索引 `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
 --
 
@@ -2201,7 +2221,7 @@ ALTER TABLE `classes`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `class_student`
 --
 ALTER TABLE `class_student`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=480;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=481;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `dept`
@@ -2225,7 +2245,13 @@ ALTER TABLE `status`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=480;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=481;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
