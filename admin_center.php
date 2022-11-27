@@ -14,7 +14,8 @@ include "./db/base.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>後台管理中心</title>
-    <link rel="stylesheet" href="style.css">
+    <?php include "./layouts/link_css.php";?>
+    <link rel="stylesheet" href="./css/back.css">
 
 </head>
 <body>
@@ -32,6 +33,6 @@ if(file_exists($file)){
     include "./back/main.php";
 }
 ?>
-    
+<?php include "./layouts/scripts.php";?>
 </body>
 </html>
