@@ -1,11 +1,12 @@
 <?php
-session_start();
+//因為session_start()太常用，所以移到base.php中,並且把include base.php放在檔案的最前面來引入
+include "./db/base.php";
+
 if(!isset($_SESSION['login'])){
     header("location:index.php");
     exit();
 }
 
-include "./db/base.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +23,7 @@ include "./db/base.php";
 <?php
     include "./layouts/header.php";
 ?>
+<main class="container">
 <h1 style='text-align:center'>學生管理系統</h1> 
 <?php
 $do=$_GET['do']??'main';
@@ -33,6 +35,7 @@ if(file_exists($file)){
     include "./back/main.php";
 }
 ?>
+</main>
 <?php include "./layouts/scripts.php";?>
 </body>
 </html>

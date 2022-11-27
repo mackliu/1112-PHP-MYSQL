@@ -1,10 +1,10 @@
-*{
+/* *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+} */
 
-header{
+/* header{
     padding:1rem;
     box-shadow: 0 0 10px #ccc;
     margin-bottom: 1.5rem;
@@ -13,7 +13,7 @@ header .nav{
     width:800px;
     margin:auto;
 
-}
+} */
 
 .list-students{
     border-collapse: collapse;
@@ -26,7 +26,7 @@ header .nav{
     text-align: center;
 }
 .list-students td:nth-last-child(1){
-    text-align: right;
+    text-align: center;
 }
 nav,.pages{
     text-align: center;
