@@ -22,33 +22,33 @@
             switch($local){
                 case "index":
                     echo "<div>";
-                    echo "<a href='index.php'>回首頁</a>";
+                    echo "<a class='mx-2' href='index.php'>回首頁</a>";
                     echo "</div>";
                     echo "<div>";
                     echo "<!-----新增功能預定----->";
-                    echo "<a href='index.php?do=students_list'>學生列表</a>";
+                    echo "<a class='mx-2' href='index.php?do=students_list'>學生列表</a>";
                     echo "</div>";
                     echo "<div>";
                     if(isset($_SESSION['login'])){
-                        echo "<a href='admin_center.php'>回管理中心</a>";
-                        echo "<a href='logout.php'>教師登出</a>";
+                        echo "<a class='mx-2' href='admin_center.php'>回管理中心</a>";
+                        echo "<a class='mx-2' href='logout.php'>教師登出</a>";
                     }else{
-                        echo "<a href='index.php?do=reg'>教師註冊</a>";
-                        echo "<a href='index.php?do=login'>教師登入</a>";
+                        echo "<a class='mx-2' href='index.php?do=reg'>教師註冊</a>";
+                        echo "<a class='mx-2' href='index.php?do=login'>教師登入</a>";
                     }
                     echo "</div>";
                 break;
                 case "admin_center":
                     echo "<div>";
-                    echo "<a href='admin_center.php'>回管理首頁</a>";
-                    echo "<a href='index.php'>回網站首頁</a>";
+                    echo "<a class='mx-2' href='admin_center.php'>回管理首頁</a>";
+                    echo "<a class='mx-2' href='index.php'>回網站首頁</a>";
                     echo "</div>";
                     echo "<div>";
-                    echo "<a href='admin_center.php?do=students_list'>學生管理</a>";
+                    echo "<a class='mx-2' href='admin_center.php?do=students_list'>學生管理</a>";
                     echo "</div>";
                     echo "<div>";
                     //<!-- <a href="?do=add">新增學生</a> -->
-                    echo "<a href='index.php?do=logout'>教師登出</a>";
+                    echo "<a class='mx-2' href='logout.php'>教師登出</a>";
                     echo "</div>";
                 break;
             }

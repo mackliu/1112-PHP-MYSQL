@@ -52,7 +52,7 @@ nav,.pages{
     border-radius: 8px;
 
 }
-nav a{
+/* nav a{
     display:inline-block;
     padding:5px 10px;
     text-decoration: none;
@@ -61,9 +61,9 @@ nav a:hover{
     display:inline-block;
     padding:5px 10px;
     text-decoration: underline;
-}
+} */
 
-.class-list{
+/* .class-list{
    display: flex; 
    list-style-type: none;
    justify-content: center;
@@ -83,7 +83,7 @@ nav ul.class-list li a{
     color:white;
     font-weight: bolder;
     text-decoration: underline;
-}
+} */
 .now{
     background-color: green;
     color:white;
