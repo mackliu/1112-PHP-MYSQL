@@ -26,6 +26,7 @@
                     echo "</div>";
                     echo "<div>";
                     echo "<!-----新增功能預定----->";
+                    echo "<a class='mx-2' href='index.php?do=main'>最新消息</a>";
                     echo "<a class='mx-2' href='index.php?do=students_list'>學生列表</a>";
                     echo "</div>";
                     echo "<div>";
