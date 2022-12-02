@@ -4,7 +4,9 @@
 include_once "./db/base.php";
 
 
-$rows=all('students',' LIMIT 10');
+//$rows=all('students',['name'=>'宋時雨']);
+//$rows=all('students',['dept'=>1,'graduate_at'=>1]);
+$rows=all('students',['dept'=>1,'graduate_at'=>1]," ORDER BY `id` desc");
 dd($rows);
 
 
@@ -27,13 +29,21 @@ function all($table,...$args){
     if(isset($args[0])){
         if(is_array($args[0])){
             //是陣列 ['acc'=>'mack','pw'=>'1234'];
+            //是陣列 ['product'=>'PC','price'=>'10000'];
 
-             where `acc`='mack' && `pw`='1234';
+            foreach($args[0] as $key => $value){
+                $tmp[]="`$key`='$value'";
+            }
 
+            $sql=$sql ." WHERE ". join(" && " ,$tmp);
         }else{
             //是字串
             $sql=$sql . $args[0];
         }
+    }
+
+    if(isset($args[1])){
+        $sql = $sql . $args[1];
     }
 
     echo $sql;
