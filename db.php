@@ -47,7 +47,25 @@ dd($row); */
 //del('students',18);
 //del('students',21);
 
-echo del('students',['dept'=>4]);
+//echo del('students',['dept'=>4]);
+
+?>
+<h3>q()-萬用自訂查詢函式</h3>
+<?php
+
+$result=q("select count(id) from `students` ");
+echo $result[0][0];
+
+$students=q("SELECT `students`.`id`,
+                    `students`.`school_num` as '學號',
+                    `students`.`name` as '姓名',
+                    `students`.`birthday` as '生日',
+                    `students`.`graduate_at` as '畢業國中'
+                    FROM `class_student`,`students` 
+                    WHERE `class_student`.`school_num`=`students`.`school_num` && 
+                          `class_student`.`class_code`='101'");
+
+dd($students);
 
 ?>
 <?php
@@ -200,5 +218,12 @@ function del($table,$id){
     echo $sql;
     return $pdo->exec($sql);
 }
+
+//萬用sql函式
+function q($sql){
+    global $pdo;
+    return $pdo->query($sql)->fetchAll();
+}
+
 
 ?>
