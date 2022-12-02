@@ -2,14 +2,20 @@
 <pre>
 <?php
 
-starts('正三角形',10);
-starts('菱形',11);
-starts('矩形',20);
-starts('直角三角形',12);
-starts('正三角形',20);
+starts(3);
+starts('菱形');
+starts(4);
+starts(3434);
+starts(434);
 
 
-function starts($shape,$size){
+function starts($shape='正三角形',$size=7){
+    $array=['正三角形','直角三角形','矩形','菱形'];
+    if(!in_array($shape,$array)){
+        echo "請填入正確的形狀('正三角形','直角三角形','矩形','菱形')";
+        return ;
+    }
+
     switch($shape){
         case "正三角形":
             for($i=1 ; $i <= $size ;$i++){
