@@ -19,7 +19,7 @@ foreach($rows as $row){
     echo ($row['top']==1)?"top":'';
     echo ($row['id']==$hot)?"hot":'';
     echo "<a href='index.php?do=news_detail&id={$row['id']}'>";
-    echo $row['subject'];`
+    echo $row['subject'];
     echo "</a>";
     echo "</div>";
     echo "<div class='col-md-2 text-center'>";
