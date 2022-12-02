@@ -34,13 +34,22 @@ dd($row); */
 <h4>insert()-新增資料</h4>
 <?php
 
-insert('class_student',['school_num'=>'911799',
-                        'class_code'=>'101',
-                        'seat_num'=>51,
-                        'year'=>2000])
+//insert('class_student',['school_num'=>'911799',
+//                        'class_code'=>'101',
+//                        'seat_num'=>51,
+//                        'year'=>2000])
 
 ?>
 
+<h3>del()-刪除資料</h3>
+<?php
+
+//del('students',18);
+//del('students',21);
+
+echo del('students',['dept'=>4]);
+
+?>
 <?php
 function dd($array){
     echo "<pre>";
@@ -149,10 +158,10 @@ function update($table,$col,...$args){
 
 //新增資料
 /**
- * ['school_num'=>'911799',
+ * `['school_num'=>'911799',
  *  'class_code'=>'101',
  *  'seat_num'=>51,
- *  'year'=>2000]
+ *  'year'=>2000]`
  */
 function insert($table,$cols){
     global $pdo;
@@ -170,4 +179,26 @@ function insert($table,$cols){
     echo $sql;
     return $pdo->exec($sql);
 }
+
+//刪除資料
+function del($table,$id){
+    global $pdo;
+    $sql="delete from `$table` ";
+
+    if(is_array($id)){
+        foreach($id as $key => $value){
+            $tmp[]="`$key`='$value'";
+        }
+
+        $sql = $sql . " where " . join(" && ",$tmp);
+
+    }else{
+
+        $sql=$sql . " where `id`='$id'";
+    }
+
+    echo $sql;
+    return $pdo->exec($sql);
+}
+
 ?>
