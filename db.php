@@ -6,9 +6,14 @@ include_once "./db/base.php";
 
 //$rows=all('students',['name'=>'宋時雨']);
 //$rows=all('students',['dept'=>1,'graduate_at'=>1]);
-$rows=all('students',['dept'=>1,'graduate_at'=>1]," ORDER BY `id` desc");
-dd($rows);
+//$rows=all('students',['dept'=>1,'graduate_at'=>1]," ORDER BY `id` desc");
+//dd($rows);
+//
 
+$row=find('students',100);
+dd($row);
+$row=find('students',['name'=>'林玟玲']);
+dd($row);
 
 function dd($array){
     echo "<pre>";
@@ -46,10 +51,33 @@ function all($table,...$args){
         $sql = $sql . $args[1];
     }
 
-    echo $sql;
+    //echo $sql;
     return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
 }
 
+
+//傳回指定id的資料
+                    //['acc'=>'mack','pw'=>1234];
+                    // 1,200,312
+function find($table,$id){
+    global $pdo;
+    $sql="select * from `$table` ";
+
+    if(is_array($id)){
+        foreach($id as $key => $value){
+            $tmp[]="`$key`='$value'";
+        }
+
+        $sql = $sql . " where " . join(" && ",$tmp);
+
+    }else{
+
+        $sql=$sql . " where `id`='$id'";
+    }
+
+
+    return $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+}
 
 ?>
