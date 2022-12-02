@@ -28,11 +28,18 @@ dd($row); */
 //$num=update('class_student',['class_code'=>102],['class_code'=>101]);
 //echo "一供有".$num."筆資料更新成功";
 
-update('class_student',['class_code'=>101],18);
+//update('class_student',['class_code'=>101],18);
 ?>
 
+<h4>insert()-新增資料</h4>
+<?php
 
+insert('class_student',['school_num'=>'911799',
+                        'class_code'=>'101',
+                        'seat_num'=>51,
+                        'year'=>2000])
 
+?>
 
 <?php
 function dd($array){
@@ -139,4 +146,28 @@ function update($table,$col,...$args){
     return $pdo->exec($sql);
 }
 
+
+//新增資料
+/**
+ * ['school_num'=>'911799',
+ *  'class_code'=>'101',
+ *  'seat_num'=>51,
+ *  'year'=>2000]
+ */
+function insert($table,$cols){
+    global $pdo;
+
+    $keys=array_keys($cols);
+    //dd(join("','",$cols));
+
+    $sql="insert into $table (`" . join("`,`",$keys) . "`) values('" . join("','",$cols) . "')";
+    //$sql="insert into $table (`";
+    //$sql=$sql . join("`,`",$keys);
+    //$sql=$sql . "`) values('";
+    //$sql=$sql . join("','",$cols);
+    //$sql=$sql . "')";
+
+    echo $sql;
+    return $pdo->exec($sql);
+}
 ?>
