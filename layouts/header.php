@@ -28,6 +28,7 @@
                     echo "<!-----新增功能預定----->";
                     echo "<a class='mx-2' href='index.php?do=main'>最新消息</a>";
                     echo "<a class='mx-2' href='index.php?do=students_list'>學生列表</a>";
+                    echo "<a class='mx-2' href='index.php?do=survey'>意見調查</a>";
                     echo "</div>";
                     echo "<div>";
                     if(isset($_SESSION['login'])){
@@ -47,6 +48,7 @@
                     echo "<div>";
                     echo "<a class='mx-2' href='admin_center.php?do=students_list'>學生管理</a>";
                     echo "<a class='mx-2' href='admin_center.php?do=news'>新聞管理</a>";
+                    echo "<a class='mx-2' href='admin_center.php?do=survey'>問卷管理</a>";
                     echo "</div>";
                     echo "<div>";
                     //<!-- <a href="?do=add">新增學生</a> -->
