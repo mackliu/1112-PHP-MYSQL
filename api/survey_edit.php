@@ -21,6 +21,7 @@ foreach($_POST['opt_id'] as $idx => $id){
     update('survey_options',['opt'=>$_POST['opt'][$idx]],$id);
 }
 
+dd($_POST['optn']);
 
 header("location:../admin_center.php?do=survey");
 
