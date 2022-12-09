@@ -103,7 +103,7 @@ function update($table,$col,...$args){
     }
 
 
-   // echo $sql;
+    echo $sql;
     //$t=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     //$t=$pdo->exec($sql);
     
@@ -163,6 +163,10 @@ function q($sql){
     return $pdo->query($sql)->fetchAll();
 }
 
+//header函式
+function to($location){
+    header("location:$location");
+}
 
 
 
