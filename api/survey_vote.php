@@ -17,6 +17,6 @@ echo "<hr>"; */
 update("survey_subject",$subject,$subject['id']);
 update("survey_options",$option,$option['id']);
 
-to("../index.php?do=survery_result&id={$subject['id']}");
+to("../index.php?do=survey_result&id={$subject['id']}");
 
 ?>
