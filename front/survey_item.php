@@ -1,11 +1,12 @@
 <?php
 if(isset($_GET['id'])){
-
     $survey=find("survey_subject",$_GET['id']);
+    $options=all("survey_options",['subject_id'=>$_GET['id']]);
+/*     dd($survey);
+    dd($options); */
 }else{
     $error="請回到問卷首頁選擇正確的題目來進行";
 }
-
 
 ?>
 <h3 class="text-center font-weight-bold">Lorem ipsum dolor sit</h3>
@@ -16,7 +17,6 @@ if(isset($_GET['id'])){
     if(isset($error)){
         echo "<span style='color:red'>".$error."</span>";
     }else{
-
 
     ?>
     <!--列表項目--> 
